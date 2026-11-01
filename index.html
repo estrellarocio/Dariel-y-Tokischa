@@ -21,7 +21,7 @@ button,textarea{font:inherit}button{cursor:pointer}
 .screen{display:none;min-height:100svh;position:relative;align-items:center;justify-content:center;padding:90px 18px 65px;isolation:isolate}
 .screen.active{display:flex;animation:appear .85s cubic-bezier(.2,.7,.2,1) both}
 @keyframes appear{from{opacity:0;transform:translateY(18px) scale(.99);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
-.cover{padding:0;background:linear-gradient(0deg,#090507ed 0%,#09050766 40%,#09050735 100%),url('IMG-20261011-WA0031.jpg') center 43%/cover no-repeat}
+.cover{padding:0;background:linear-gradient(0deg,#090507ed 0%,#09050766 40%,#09050735 100%),url('cbe0cd383933b9c9715b6e244baae9d5.jpg') center 43%/cover no-repeat}
 .cover:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,transparent 5%,#09050744 85%);z-index:-1}
 .cover-content{width:min(800px,92%);text-align:center;padding:110px 8px 85px;position:relative;z-index:3;text-shadow:0 4px 30px #000}
 .eyebrow{font:10px Arial,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
@@ -35,11 +35,11 @@ button,textarea{font:inherit}button{cursor:pointer}
 .panel:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,#b32d4728,transparent 62%)}
 .panel>*{position:relative}.panel h2{font-size:clamp(2.1rem,6vw,4rem);font-weight:400;line-height:1.08;margin:14px 0 18px}
 .copy{font-size:clamp(1.04rem,2.6vw,1.23rem);line-height:1.95;color:#f2dfd6;white-space:pre-line}
-.confession{background:linear-gradient(#0804079c,#080407d9),url('IMG-20261011-WA0032.jpg') center/cover}
-.roulette-screen{background:linear-gradient(#080407aa,#080407e8),url('IMG-20261011-WA0030.jpg') center/cover}
-.desires{background:linear-gradient(#080407b9,#080407e8),url('IMG-20261011-WA0029.jpg') center/cover}
-.envelopes{background:linear-gradient(#080407b0,#080407e8),url('IMG-20261011-WA0033.jpg') center/cover}
-.final{background:linear-gradient(#080407a8,#080407e8),url('IMG-20261011-WA0035.jpg') center/cover}
+.confession{background:linear-gradient(#0804079c,#080407d9),url('f930fcf1f430fef70bd6744b1be0c647.jpg') center/cover}
+.roulette-screen{background:linear-gradient(#080407aa,#080407e8),url('1759d5d2511ec094b8078df4c36e3bfa.jpg') center/cover}
+.desires{background:linear-gradient(#080407b9,#080407e8),url('72be309eb587f2d574d533fb3f92d74.jpg') center/cover}
+.envelopes{background:linear-gradient(#080407b0,#080407e8),url('7a6255c0a5b3e0b1d2579353af831f65.jpg') center/cover}
+.final{background:linear-gradient(#080407a8,#080407e8),url('9e6f5461c8334d5e8d17b59fe11ca3be.jpg') center/cover}
 .navrow{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:28px}
 .small{font:11px Arial,sans-serif;letter-spacing:.06em;color:var(--muted);line-height:1.7}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:15px;text-align:left;margin-top:26px}
@@ -113,7 +113,12 @@ h3{font-size:25px!important}
 .featured-photo img{
  display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;
 }
-.cover{padding:0!important;min-height:100svh!important}
+.cover{
+ min-height:100svh!important;padding:0!important;
+ background:
+ linear-gradient(0deg,rgba(9,5,7,.55),rgba(9,5,7,.08) 55%,rgba(9,5,7,.18)),
+ url('cbe0cd383933b9c9715b6e244baae9d5.jpg') center center/cover no-repeat!important;
+}
 .cover-content{
  width:min(92%,900px)!important;max-width:900px!important;
  margin:auto!important;padding:clamp(90px,15vh,170px) 18px 70px!important;
@@ -159,8 +164,7 @@ h3{font-size:25px!important}
  margin:14px 0 0;padding:12px 20px;border:1px solid #d8b77c88;
  border-radius:30px;background:transparent;color:var(--cream);
 }
-body.envelope-open{overflow:hidden}
-.envelope.is-selected{border-color:#f4d69b!important;box-shadow:0 0 0 2px #d8b77c33,0 12px 32px #a51f3655}
+body.envelope-open{overflow:hidden!important}
 @media(max-width:600px){
  .screen{padding:76px 12px 68px!important}
  .cover{padding:0!important}
@@ -171,19 +175,18 @@ body.envelope-open{overflow:hidden}
  .envelope-modal-card{max-height:90svh;padding:24px 18px}
 }
 </style>
-
 </head>
 <body>
-<div id="grain"></div>
-<div id="particles"></div>
 <div id="progress"></div>
+<div id="particles"></div>
+<div id="grain"></div>
 
 <div id="musicbar">
- <button id="playMusic" aria-label="Reproducir o pausar">▶</button>
- <span id="trackName">Earned It · The Weeknd</span>
- <button id="muteMusic" aria-label="Silenciar">♫</button>
+ <button aria-label="Reproducir o pausar música" id="playMusic">▶</button>
+ <span id="trackName">Nuestra música</span>
+ <button aria-label="Silenciar música" id="muteMusic">♫</button>
+ <audio id="audio" loop=""></audio>
 </div>
-<audio id="audio" preload="none"></audio>
 
 <main>
 
@@ -201,38 +204,61 @@ body.envelope-open{overflow:hidden}
  <div class="panel">
   <div class="eyebrow">Un secreto antes de comenzar</div>
   <h2>He esperado esta noche</h2>
+
   <figure class="featured-photo">
-   <img alt="Fotografía de Dariel y Tokischa" loading="lazy" src="IMG-20261011-WA0032.jpg"/>
+   <img alt="Fotografía 2 de Dariel y Tokischa"
+        loading="lazy"
+        src="f930fcf1f430fef70bd6744b1be0c647.jpg"/>
   </figure>
+
   <p class="copy">No te imaginas cuántas veces he pensado en esta noche. Cuántas veces te he imaginado aquí conmigo, cuánto he deseado tenerte cerca, sentir tus brazos, tus besos y esa manera tan tuya de hacerme perder la noción del tiempo.</p>
+
   <p class="copy">Quiero que esta noche nos olvidemos del mundo. Que no tengamos prisa, que nos disfrutemos, que nos provoquemos, que nos deseemos tanto que nos cueste pensar en cualquier otra cosa.</p>
+
   <p class="copy">Que esta noche nos sobren las ganas y nos falten las horas. ❤️‍🔥</p>
+
   <div class="navrow">
    <button class="btn" onclick="show('roulette')">Continuar nuestra noche →</button>
   </div>
  </div>
  <footer>UNA NOCHE QUE ES SOLAMENTE NUESTRA</footer>
 </section>
-
 <section class="screen roulette-screen" id="roulette">
  <div class="panel">
   <div class="eyebrow">Que decida el azar</div>
   <h2>La ruleta de las sorpresas</h2>
+
   <figure class="featured-photo">
-   <img alt="Fotografía de Dariel y Tokischa" loading="lazy" src="IMG-20261011-WA0030.jpg"/>
+   <img alt="Fotografía 3 de Dariel y Tokischa"
+        loading="lazy"
+        src="1759d5d2511ec094b8078df4c36e3bfa.jpg"/>
   </figure>
+
   <p class="copy">Una vuelta, dos posibilidades… ¿quién tendrá que sorprender al otro?</p>
+
   <div class="wheel-wrap">
    <div class="pointer"></div>
    <div id="wheel">
     <div class="wheel-label" id="wheelLabels"></div>
    </div>
   </div>
-  <div class="result" id="wheelResult" aria-live="polite">¿Quién tendrá que sorprender?</div>
-  <button class="btn" id="spinBtn" onclick="spinWheel()">Girar la ruleta ❤️‍🔥</button>
-  <p class="small">La ruleta elige quién sorprende. La sorpresa la deciden ustedes.</p>
+
+  <div class="result" id="wheelResult" aria-live="polite">
+   ¿Quién tendrá que sorprender?
+  </div>
+
+  <button class="btn" id="spinBtn" onclick="spinWheel()">
+   Girar la ruleta ❤️‍🔥
+  </button>
+
+  <p class="small">
+   La ruleta elige quién sorprende. La sorpresa la deciden ustedes.
+  </p>
+
   <div class="navrow">
-   <button class="btn" onclick="show('desires')">Seguir descubriendo →</button>
+   <button class="btn" onclick="show('desires')">
+    Seguir descubriendo →
+   </button>
   </div>
  </div>
  <footer>QUE EL AZAR HAGA SU PARTE</footer>
@@ -242,26 +268,52 @@ body.envelope-open{overflow:hidden}
  <div class="panel">
   <div class="eyebrow">Dos confesiones · Cero vergüenza</div>
   <h2>Deseos ocultos</h2>
+
   <figure class="featured-photo">
-   <img alt="Fotografía de Dariel y Tokischa" loading="lazy" src="IMG-20261011-WA0029.jpg"/>
+   <img alt="Fotografía 4 de Dariel y Tokischa"
+        loading="lazy"
+        src="728be309eb587f2d574d533fb3f92d74.jpg"/>
   </figure>
-  <p class="copy">Hay deseos que se guardan en silencio… y otros que merecen ser confesados.</p>
+
+  <p class="copy">
+   Hay deseos que se guardan en silencio… y otros que merecen ser confesados.
+  </p>
+
   <div class="two">
    <div class="subcard">
     <h3>Dariel, cuéntame tu deseo oculto…</h3>
-    <p class="small">¿Qué has imaginado? ¿Qué deseas experimentar conmigo? ¿Qué es eso que llevas tiempo queriendo decirme?</p>
+
+    <p class="small">
+     ¿Qué has imaginado? ¿Qué deseas experimentar conmigo?
+     ¿Qué es eso que llevas tiempo queriendo decirme?
+    </p>
+
     <textarea id="darielDesire" placeholder="Escribe aquí tu deseo…"></textarea>
-    <button class="btn" onclick="copyText('darielDesire')">Copiar confesión</button>
+
+    <button class="btn" onclick="copyText('darielDesire')">
+     Copiar confesión
+    </button>
    </div>
+
    <div class="subcard">
     <h3>Tokischa, ahora es tu turno…</h3>
-    <p class="small">No te guardes nada. Cuéntale ese deseo que tienes reservado para él.</p>
+
+    <p class="small">
+     No te guardes nada. Cuéntale ese deseo que tienes reservado para él.
+    </p>
+
     <textarea id="tokischaDesire" placeholder="Escribe aquí tu deseo…"></textarea>
-    <button class="btn" onclick="copyText('tokischaDesire')">Copiar confesión</button>
+
+    <button class="btn" onclick="copyText('tokischaDesire')">
+     Copiar confesión
+    </button>
    </div>
   </div>
+
   <div class="navrow">
-   <button class="btn" onclick="show('envelopes')">Abrir los sobres misteriosos →</button>
+   <button class="btn" onclick="show('envelopes')">
+    Abrir los sobres misteriosos →
+   </button>
   </div>
  </div>
  <footer>LO QUE SE CONFIESA ENTRE NOSOTROS</footer>
@@ -272,10 +324,15 @@ body.envelope-open{overflow:hidden}
   <h2>¿Qué harías si estuvieras aquí conmigo?</h2>
 
   <figure class="featured-photo">
-   <img alt="Fotografía de Dariel y Tokischa" loading="lazy" src="IMG-20261011-WA0033.jpg"/>
+   <img alt="Fotografía 5 de Dariel y Tokischa"
+        loading="lazy"
+        src="7a6255c0a5b3e0b1d2579353af831f65.jpg"/>
   </figure>
 
-  <p class="copy">Elige un sobre. Dentro hay una pregunta para los dos. Pueden responder por turnos y compartir lo que escriban.</p>
+  <p class="copy">
+   Elige un sobre. Dentro hay una pregunta para los dos.
+   Pueden responder por turnos y compartir lo que escriban.
+  </p>
 
   <div class="envelope-grid" id="envelopeGrid"></div>
 
@@ -287,15 +344,20 @@ body.envelope-open{overflow:hidden}
        role="dialog">
 
    <div class="envelope-modal-card">
-    <div class="modal-kicker" id="envelopeModalTitle">UNA PREGUNTA PARA LOS DOS</div>
+    <div class="modal-kicker" id="envelopeModalTitle">
+     UNA PREGUNTA PARA LOS DOS
+    </div>
 
     <div aria-live="polite" class="question" id="question">
      Elige uno de los sobres para descubrir tu pregunta…
     </div>
 
-    <textarea id="answer" placeholder="Escribe lo que harías o lo que le responderías…"></textarea>
+    <textarea id="answer"
+              placeholder="Escribe lo que harías o lo que le responderías…"></textarea>
 
-    <button class="btn" onclick="copyText('answer')">Copiar mi respuesta</button>
+    <button class="btn" onclick="copyText('answer')">
+     Copiar mi respuesta
+    </button>
 
     <button class="close-envelope" id="closeEnvelope" type="button">
      Cerrar sobre ✉
@@ -304,9 +366,12 @@ body.envelope-open{overflow:hidden}
   </div>
 
   <div class="navrow">
-   <button class="btn" onclick="show('final')">Llegamos al final… →</button>
+   <button class="btn" onclick="show('final')">
+    Llegamos al final… →
+   </button>
   </div>
  </div>
+
  <footer>CIERRA LOS OJOS E IMAGÍNANOS JUNTOS</footer>
 </section>
 
@@ -316,17 +381,26 @@ body.envelope-open{overflow:hidden}
   <h2>Cómo hemos llegado hasta aquí…</h2>
 
   <figure class="featured-photo">
-   <img alt="Fotografía de Dariel y Tokischa" loading="lazy" src="IMG-20261011-WA0035.jpg"/>
+   <img alt="Fotografía 6 de Dariel y Tokischa"
+        loading="lazy"
+        src="9e6f5461c8334d5e8d17b59fe11ca3be.jpg"/>
   </figure>
 
-  <p class="copy">Y bueno, mi amor… hemos llegado hasta aquí. Esto me da muchísima vergüenza. Realmente no pude encontrar un video, digamos, decente. Pero pues encontré este. Y no sé, literalmente dice esta búsqueda. No sé por qué la hice, pero lo quería compartir contigo y pues me gustaría que lo veamos y nos dejemos llevar.</p>
+  <p class="copy">
+   Y bueno, mi amor… hemos llegado hasta aquí. Esto me da muchísima vergüenza.
+   Realmente no pude encontrar un video, digamos, decente. Pero pues encontré este.
+   Y no sé, literalmente dice esta búsqueda. No sé por qué la hice, pero lo quería
+   compartir contigo y pues me gustaría que lo veamos y nos dejemos llevar.
+  </p>
 
   <button class="btn" id="revealVideo" onclick="revealVideo()">
    Tengo algo que mostrarte…
   </button>
 
   <div class="video-placeholder" hidden="" id="videoArea">
-   <p class="small">Aquí aparecerá el video que Tokischa eligió para ti.</p>
+   <p class="small">
+    Aquí aparecerá el video que Tokischa eligió para ti.
+   </p>
 
    <video controls="" id="finalVideo" playsinline="" preload="metadata"></video>
 
@@ -340,9 +414,12 @@ body.envelope-open{overflow:hidden}
   </p>
 
   <div class="navrow">
-   <button class="btn" onclick="show('welcome')">Volver al comienzo ↺</button>
+   <button class="btn" onclick="show('welcome')">
+    Volver al comienzo ↺
+   </button>
   </div>
  </div>
+
  <footer>CONTINUARÁ… TÚ Y YO</footer>
 </section>
 
@@ -350,16 +427,21 @@ body.envelope-open{overflow:hidden}
 
 <div id="toast"></div>
 <script>
+/* NAVEGACIÓN */
 const screens=['welcome','confession','roulette','desires','envelopes','final'];
 
 function show(id){
  screens.forEach(s=>{
   document.getElementById(s).classList.toggle('active',s===id);
  });
+
  const i=screens.indexOf(id);
+
  document.getElementById('progress').style.width=
   ((i+1)/screens.length*100)+'%';
+
  window.scrollTo({top:0,behavior:'smooth'});
+
  if(id==='final') transitionMusic();
 }
 
@@ -377,6 +459,7 @@ function startMusic(){
   trackName.textContent='Earned It · The Weeknd';
   musicStarted=true;
  }
+
  audio.play().then(()=>{
   playBtn.textContent='Ⅱ';
  }).catch(()=>{
@@ -394,6 +477,7 @@ playBtn.addEventListener('click',()=>{
   startMusic();
   return;
  }
+
  if(audio.paused){
   audio.play();
   playBtn.textContent='Ⅱ';
@@ -419,6 +503,7 @@ document.getElementById('muteMusic').addEventListener('click',()=>{
 
 function transitionMusic(){
  if(secondTrack)return;
+
  secondTrack=true;
 
  const wasPlaying=!audio.paused;
@@ -431,9 +516,10 @@ function transitionMusic(){
  }
 }
 
-/* MENSAJES */
+/* NOTIFICACIONES */
 function toast(msg){
  const t=document.getElementById('toast');
+
  t.textContent=msg;
  t.classList.add('show');
 
@@ -541,7 +627,7 @@ prompts.forEach((prompt,index)=>{
  grid.appendChild(button);
 });
 
-/* MODAL ANIMADO DE LOS SOBRES */
+/* VENTANA ANIMADA DE LOS SOBRES */
 (function(){
  const modal=document.getElementById('envelopeModal');
  const close=document.getElementById('closeEnvelope');
@@ -549,12 +635,14 @@ prompts.forEach((prompt,index)=>{
  function closeEnvelope(){
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden','true');
+
   document.body.classList.remove('envelope-open');
 
   document.querySelectorAll('.envelope').forEach(button=>{
    button.classList.remove('is-selected');
 
    const symbol=button.querySelector('.symbol');
+
    if(symbol)symbol.textContent='✉';
   });
  }
@@ -564,16 +652,19 @@ prompts.forEach((prompt,index)=>{
    item.classList.remove('is-selected');
 
    const symbol=item.querySelector('.symbol');
+
    if(symbol)symbol.textContent='✉';
   });
 
   button.classList.add('is-selected');
 
   const symbol=button.querySelector('.symbol');
+
   if(symbol)symbol.textContent='✧';
 
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden','false');
+
   document.body.classList.add('envelope-open');
 
   close.focus({preventScroll:true});
