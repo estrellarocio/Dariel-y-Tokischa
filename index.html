@@ -2,224 +2,782 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10070d">
-<title>Nuestra luna de miel | Dariel & Tokischa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160910">
+<title>Nuestra Luna de Miel | Dariel & Tokischa</title>
+
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#10070d;color:#f8edf0;font-family:Georgia,serif}
-button,textarea{font:inherit}
-button{cursor:pointer}
-section{padding:75px 20px;max-width:950px;margin:auto}
-h1,h2{text-align:center;font-weight:400}
-h1{font-size:clamp(40px,9vw,76px)}
-h2{font-size:clamp(34px,7vw,55px)}
-p{line-height:1.85}
-.eyebrow{text-align:center;color:#d9b77b;font:11px Arial;letter-spacing:3px}
-.intro{text-align:center;max-width:700px;margin:20px auto 35px;color:#e5cbd2}
-.btn{background:linear-gradient(135deg,#8c2441,#421323);border:1px solid #d9a5b2;color:white;padding:15px 25px;border-radius:40px;margin:10px;transition:.3s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px #a52b4c66}
-.center{text-align:center}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:40px 20px 100px;background:linear-gradient(0deg,#10070df2,#10070d20 80%),url('https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/cbe0cd383933b9c9715b6e244baae9d5.jpg') center/contain no-repeat #160b10}
-.hero p{max-width:650px}
-.photo{width:100%;height:auto;max-height:75vh;object-fit:contain;display:block;margin:30px auto;border-radius:5px;box-shadow:0 20px 55px #0009}
-.card{background:linear-gradient(145deg,#301321,#160b12);border:1px solid #a96a7a66;border-radius:22px;padding:25px;margin:25px auto;max-width:750px}
-.story{text-align:center;max-width:750px;margin:auto;font-size:18px;color:#ead9de}
-.music{position:fixed;bottom:10px;left:10px;right:10px;z-index:10;background:#21101bf2;border:1px solid #a96a7a;border-radius:16px;padding:12px;display:none;align-items:center;gap:12px;max-width:500px;margin:auto}
-.music button{background:none;border:0;color:white;font-size:20px}
-.music span{flex:1;font:12px Arial}
-#wheel{width:min(78vw,350px);height:min(78vw,350px);border-radius:50%;margin:25px auto;background:conic-gradient(#6d1934 0 30deg,#d7a0a7 30deg 60deg,#6d1934 60deg 90deg,#d7a0a7 90deg 120deg,#6d1934 120deg 150deg,#d7a0a7 150deg 180deg,#6d1934 180deg 210deg,#d7a0a7 210deg 240deg,#6d1934 240deg 270deg,#d7a0a7 270deg 300deg,#6d1934 300deg 330deg,#d7a0a7 330deg);border:7px solid #d9b77b;display:grid;place-items:center;transition:transform 5s cubic-bezier(.12,.75,.08,1);box-shadow:0 15px 40px #0009}
-#wheel span{background:#35101f;border-radius:50%;padding:23px;font-size:13px}
-.result{font-size:23px;color:#f1bdc9;min-height:40px}
-.confessions{display:grid;grid-template-columns:1fr;gap:15px}
-textarea{width:100%;min-height:120px;background:#10070d;color:white;border:1px solid #a96a7a;border-radius:12px;padding:14px}
-.envelopes{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.envelope{background:linear-gradient(145deg,#64223d,#260f20);border:1px solid #d9a5b2;border-radius:15px;padding:25px 10px;color:white;min-height:115px;transition:.3s}
-.envelope:hover{transform:translateY(-5px) rotate(-2deg)}
-#questionBox{display:none}
-#questionBox.show{display:block}
-.final-player{border:1px solid #a96a7a;border-radius:20px;overflow:hidden;background:#160b12;margin:30px auto;max-width:750px;text-align:center}
-.player-screen{padding:40px 22px;background:linear-gradient(#160b12bb,#160b12ee),url('https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/1759d5d2511ec094b8078df4c36e3bfa.jpg') center/contain no-repeat}
-.play{font-size:40px;border:1px solid #e9b9c3;border-radius:50%;width:70px;height:70px;display:grid;place-items:center;margin:auto}
-.upss{font-size:50px;color:#f0b9c2}
-.player-foot{padding:15px;color:#d9b77b;font:10px Arial;letter-spacing:2px}
-footer{text-align:center;padding:50px 15px 120px;color:#d9b77b;font:11px Arial;letter-spacing:2px}
-.reveal{opacity:0;transform:translateY(25px);transition:.8s}
-.reveal.visible{opacity:1;transform:none}
-@media(min-width:700px){.confessions{grid-template-columns:1fr 1fr}.envelopes{grid-template-columns:repeat(4,1fr)}}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:#160910;
+  --wine:#641d36;
+  --gold:#d9b77e;
+  --cream:#f5e5dc;
+  --muted:#c4a6ae;
+}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+button,textarea { font:inherit; }
+button { cursor:pointer; }
+.hidden { display:none!important; }
+
+#intro {
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 22px;
+  background:
+    linear-gradient(0deg,rgba(15,5,10,.88),rgba(15,5,10,.3)),
+    url('cbe0cd383933b9c9715b6e244baae9d5.jpg') center/cover;
+}
+
+.intro-content {
+  max-width:650px;
+  animation:appear 2s ease both;
+}
+
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:10px;
+  text-transform:uppercase;
+}
+
+h1,h2,h3,.serif {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+}
+
+#intro h1 {
+  font-size:clamp(48px,12vw,88px);
+  line-height:.95;
+  margin:25px 0;
+}
+
+#intro h1 em { color:#e6b2c1; }
+
+.intro-copy {
+  color:#e2cbd1;
+  line-height:1.9;
+  font-size:13px;
+  max-width:420px;
+  margin:0 auto 30px;
+}
+
+.gold-button,.outline-button {
+  border:1px solid var(--gold);
+  padding:15px 26px;
+  color:#fff4e8;
+  background:linear-gradient(120deg,#68213c,#9b3452);
+  letter-spacing:2px;
+  font-size:10px;
+  border-radius:4px;
+  transition:.3s;
+}
+
+.gold-button:hover,.outline-button:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 30px #9b345255;
+}
+
+#mainSite { display:none; }
+
+.topbar {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#160910ef;
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #ffffff12;
+  padding:12px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  color:var(--gold);
+}
+
+.music-button {
+  border:1px solid #b77a8a66;
+  background:#321522;
+  color:#f4d9e1;
+  border-radius:30px;
+  padding:9px 13px;
+  font-size:10px;
+}
+
+.scene {
+  min-height:85vh;
+  padding:90px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  border-bottom:1px solid #ffffff0c;
+}
+
+.scene-inner {
+  width:100%;
+  max-width:760px;
+  margin:auto;
+}
+
+.scene-number {
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.scene h2 {
+  font-size:clamp(39px,9vw,65px);
+  line-height:1;
+  margin:18px 0;
+}
+
+.scene p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:2;
+}
+
+.scene-image {
+  width:100%;
+  max-width:560px;
+  max-height:440px;
+  object-fit:cover;
+  border-radius:4px;
+  border:1px solid #d9b77e44;
+  margin:28px auto;
+  display:block;
+  box-shadow:0 20px 60px #0008;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity 1s ease,transform 1s ease;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.letter {
+  background:linear-gradient(145deg,#321521,#211019);
+  border:1px solid #d9b77e55;
+  padding:30px 25px;
+  text-align:left;
+  border-radius:5px;
+  line-height:2;
+  color:#e9d4d7;
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  margin:25px auto;
+  max-width:600px;
+}
+
+.gold { color:var(--gold); }
+
+.card {
+  background:linear-gradient(145deg,#301522,#1e1018);
+  border:1px solid #d9b77e44;
+  border-radius:7px;
+  padding:25px 20px;
+  margin:20px auto;
+  max-width:580px;
+  box-shadow:0 15px 40px #0004;
+}
+
+textarea {
+  width:100%;
+  min-height:125px;
+  background:#10070d;
+  color:#fff0e9;
+  border:1px solid #a75c7466;
+  border-radius:5px;
+  padding:15px;
+  resize:vertical;
+  outline:none;
+  line-height:1.7;
+  font-size:13px;
+}
+
+textarea:focus { border-color:var(--gold); }
+
+.small-note {
+  font-size:10px!important;
+  color:#ad8b96!important;
+}
+
+/* RULETA */
+
+.wheel-wrap {
+  width:min(78vw,310px);
+  aspect-ratio:1;
+  margin:30px auto;
+  position:relative;
+}
+
+.wheel {
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border:5px solid var(--gold);
+  background:conic-gradient(
+    #7b2947 0deg 45deg,
+    #2b1420 45deg 90deg,
+    #923a58 90deg 135deg,
+    #311622 135deg 180deg,
+    #7b2947 180deg 225deg,
+    #2b1420 225deg 270deg,
+    #923a58 270deg 315deg,
+    #311622 315deg 360deg
+  );
+  box-shadow:0 0 40px #9b345244;
+  transition:transform 4s cubic-bezier(.12,.75,.18,1);
+  position:relative;
+}
+
+.wheel-label {
+  position:absolute;
+  width:50%;
+  height:50%;
+  left:25%;
+  top:25%;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:13px;
+  font-size:10px;
+  font-weight:600;
+  color:#fff2e8;
+  text-align:center;
+}
+
+.wheel-center {
+  position:absolute;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#d9b77e;
+  border:5px solid #f5e5dc;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+}
+
+.wheel-pointer {
+  position:absolute;
+  z-index:3;
+  top:-15px;
+  left:50%;
+  transform:translateX(-50%);
+  color:var(--gold);
+  font-size:35px;
+}
+
+.result {
+  border:1px solid var(--gold);
+  background:#28121d;
+  padding:23px;
+  border-radius:6px;
+  max-width:500px;
+  margin:20px auto;
+  animation:appear .7s ease;
+}
+
+.result h3 { font-size:30px; margin:0 0 10px; }
+
+/* SOBRES */
+
+.envelopes {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+  max-width:560px;
+  margin:30px auto;
+}
+
+.envelope {
+  background:linear-gradient(145deg,#6e263f,#301522);
+  border:1px solid var(--gold);
+  min-height:125px;
+  border-radius:5px;
+  color:#f7e6e2;
+  padding:15px 8px;
+  transition:.3s;
+}
+
+.envelope:hover { transform:translateY(-5px); }
+
+.envelope .symbol {
+  display:block;
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.envelope small {
+  display:block;
+  letter-spacing:2px;
+  font-size:9px;
+}
+
+.envelope:disabled {
+  opacity:.5;
+  cursor:default;
+}
+
+.modal {
+  position:fixed;
+  inset:0;
+  background:#080408ef;
+  z-index:50;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modal-box {
+  background:linear-gradient(145deg,#401a2b,#1d0e16);
+  border:1px solid var(--gold);
+  padding:35px 25px;
+  width:100%;
+  max-width:450px;
+  text-align:center;
+  border-radius:7px;
+  animation:appear .5s ease;
+}
+
+.modal-box h3 { font-size:38px; margin:10px 0; }
+
+@keyframes appear {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+footer {
+  text-align:center;
+  padding:55px 20px;
+  color:#b78e9c;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+@media(min-width:700px) {
+  .envelopes { grid-template-columns:repeat(4,1fr); }
+  .scene { padding:110px 30px; }
+}
 </style>
 </head>
+
 <body>
 
-<section class="hero" id="inicio">
- <div class="eyebrow">SOLO TÚ Y YO · NUESTRA PRIMERA NOCHE COMO ESPOSOS</div>
- <h1>Bienvenido a nuestra luna de miel, mi amor</h1>
- <p>Esta noche ya no eres solamente el hombre del que me enamoré… eres mi esposo, y tengo toda una noche para recordarte lo muchísimo que me gustas. Así que ven, mi amor… que apenas estamos comenzando. ❤️‍🔥</p>
- <button class="btn" onclick="entrar()">❤️‍🔥 Entrar a nuestra noche</button>
+<div id="particles"></div>
+
+<audio id="song1" preload="auto">
+  <source src="The%20Weeknd%20-%20Earned%20It%20(from%20Fifty%20Shades%20Of%20Grey)%20(Official%20Lyric%20Video)(MP3_160K).mp3" type="audio/mpeg">
+</audio>
+
+<audio id="song2" preload="auto">
+  <source src="I%20Feel%20It%20Coming(MP3_160K).mp3" type="audio/mpeg">
+</audio>
+
+<!-- PORTADA -->
+
+<section id="intro">
+  <div class="intro-content">
+    <div class="eyebrow">Una experiencia privada · Dariel & Tokischa</div>
+    <h1>Esta noche<br><em>es nuestra.</em></h1>
+    <p class="intro-copy">
+      He preparado algo para ti, mi amor.
+      No tengas prisa. Descubre cada secreto,
+      disfruta cada momento y déjate sorprender.
+    </p>
+    <button class="gold-button" onclick="enterNight()">
+      ENTRAR A NUESTRA NOCHE
+    </button>
+    <p class="small-note">Ponte cómodo. La noche acaba de comenzar.</p>
+  </div>
 </section>
 
-<div class="music" id="music">
- <button onclick="playPause()" id="playButton">Ⅱ</button>
- <span id="songName">EARNED IT · THE WEEKND</span>
- <input type="range" min="0" max="1" step=".05" value=".65" oninput="audio.volume=this.value">
- <button onclick="nextSong()">♫</button>
+<main id="mainSite">
+
+<header class="topbar">
+  <div class="brand">Dariel <span class="gold">&</span> Tokischa</div>
+  <button class="music-button" id="musicToggle" onclick="toggleMusic()">
+    ♫ Reproducir música
+  </button>
+</header>
+
+<!-- 01 BIENVENIDA -->
+
+<section class="scene">
+  <div class="scene-inner reveal">
+    <div class="scene-number">01 · Bienvenido</div>
+    <h2>Bienvenido a<br><em class="gold">nuestro mundo.</em></h2>
+    <img class="scene-image"
+      src="cbe0cd383933b9c9715b6e244baae9d5.jpg"
+      alt="Nuestra noche">
+    <p>
+      Esta noche no hay distancias, ni relojes, ni prisas.
+      Solo nosotros, nuestros secretos y todo lo que todavía
+      nos queda por descubrir.
+    </p>
+    <p class="serif gold" style="font-size:25px">
+      Quédate. Tengo muchas sorpresas para ti.
+    </p>
+  </div>
+</section>
+
+<!-- 02 CARTA -->
+
+<section class="scene">
+  <div class="scene-inner reveal">
+    <div class="scene-number">02 · Lo que he imaginado</div>
+    <h2>Hay cosas que<br>quiero decirte...</h2>
+    <img class="scene-image"
+      src="9e6f5461c8334d5e8d17b59fe11ca3be.jpg"
+      alt="Un momento especial">
+    <div class="letter">
+      Mi amor,<br><br>
+      Si pudiera pedir algo para esta noche, sería que
+      por un momento el mundo se detuviera y solo
+      existiéramos tú y yo.<br><br>
+      He preparado cada detalle pensando en ti.
+      Quiero sorprenderte, hacerte sonreír y recordarte
+      lo especial que eres para mí.<br><br>
+      Esta noche es nuestra. Y apenas estamos comenzando.
+      <br><br>
+      <span class="gold">Con todo mi amor. ❤️</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 RULETA -->
+
+<section class="scene">
+  <div class="scene-inner reveal">
+    <div class="scene-number">03 · Atrévete a descubrir</div>
+    <h2>La ruleta de<br><em class="gold">tentaciones.</em></h2>
+    <p>No sabes qué te espera. Gira la ruleta y acepta lo que el destino haya elegido.</p>
+
+    <div class="wheel-wrap">
+      <div class="wheel-pointer">▼</div>
+      <div class="wheel" id="wheel">
+        <div class="wheel-label" style="transform:rotate(0deg)">Confesión</div>
+        <div class="wheel-label" style="transform:rotate(45deg)">Deseo</div>
+        <div class="wheel-label" style="transform:rotate(90deg)">Reto</div>
+        <div class="wheel-label" style="transform:rotate(135deg)">Recuerdo</div>
+        <div class="wheel-label" style="transform:rotate(180deg)">Atrevimiento</div>
+        <div class="wheel-label" style="transform:rotate(225deg)">Pregunta</div>
+        <div class="wheel-label" style="transform:rotate(270deg)">Sorpresa</div>
+        <div class="wheel-label" style="transform:rotate(315deg)">Tentación</div>
+      </div>
+      <div class="wheel-center"></div>
+    </div>
+
+    <button class="gold-button" id="spinButton" onclick="spinWheel()">
+      GIRAR LA RULETA
+    </button>
+
+    <div id="wheelResult" class="result hidden">
+      <div class="scene-number">TU RESULTADO</div>
+      <h3 id="resultTitle"></h3>
+      <p id="resultText"></p>
+      <button class="outline-button" onclick="spinWheel()">VOLVER A GIRAR</button>
+    </div>
+  </div>
+</section>
+
+<!-- 04 SOBRES -->
+
+<section class="scene">
+  <div class="scene-inner reveal">
+    <div class="scene-number">04 · Ocho secretos</div>
+    <h2>Elige tu<br><em class="gold">sobre.</em></h2>
+    <p>No intentes adivinar qué contiene cada uno. Solo elige y déjate sorprender.</p>
+
+    <img class="scene-image"
+      src="728be309eb587f2d574d533fb3f92d74.jpg"
+      alt="Sobres secretos">
+
+    <div class="envelopes" id="envelopes"></div>
+    <p class="small-note">Cada sobre puede abrirse una sola vez en esta visita.</p>
+  </div>
+</section>
+
+<!-- 05 CONFESIONES -->
+
+<section class="scene">
+  <div class="scene-inner reveal">
+    <div class="scene-number">05 · Entre nosotros</div>
+    <h2>Deseos<br><em class="gold">ocultos.</em></h2>
+    <img class="scene-image"
+      src="f930fcf1f430fef70bd6744b1be0c647.jpg"
+      alt="Deseos ocultos">
+
+    <p>
+      Escribe eso que llevas tiempo queriendo confesarle.
+      Después copia tu mensaje y envíaselo por WhatsApp.
+    </p>
+
+    <div class="card">
+      <h3 class="serif gold" style="font-size:30px">Tu confesión</h3>
+      <textarea id="confession" placeholder="Mi amor, hay algo que quiero confesarte..."></textarea>
+      <br><br>
+      <button class="gold-button" onclick="copyConfession()">COPIAR MI CONFESIÓN</button>
+      <button class="outline-button" onclick="sendWhatsApp()">ENVIAR POR WHATSAPP</button>
+      <p class="small-note" id="copyMessage"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 FINAL -->
+
+<section class="scene">
+  <div class="scene-inner reveal">
+    <div class="scene-number">06 · Nuestro último secreto</div>
+    <h2>Y esto...</h2>
+    <img class="scene-image"
+      src="1759d5d2511ec094b8078df4c36e3bfa.jpg"
+      alt="Nuestro último secreto">
+
+    <div class="letter" style="text-align:center">
+      <h3 class="gold" style="font-size:35px">Todavía queda algo.</h3>
+      Parece que esta vez el video no quiso acompañarnos.
+      Es demasiado grande para subirlo a nuestra página
+      y no fue posible incluirlo aquí.<br><br>
+      Pero tranquilo, mi amor… eso lo resolvemos tú y yo.
+      No quería dejarte sin saber que tenía algo preparado
+      para ti. ❤️‍🔥
+      <br><br>
+      <span class="gold">EL VIDEO QUEDA PENDIENTE… LA SORPRESA NO SE CANCELA.</span>
+    </div>
+
+    <h2 class="gold" style="font-size:45px">Te elegiría otra vez.</h2>
+    <p>Hoy, mañana y en todas nuestras noches.</p>
+  </div>
+</section>
+
+<footer>
+  HECHO CON AMOR · DARIEL & TOKISHA
+  <p class="serif gold" style="font-size:22px">Nuestra historia continúa...</p>
+</footer>
+
+</main>
+
+<!-- MODAL SOBRES -->
+
+<div id="envelopeModal" class="modal hidden">
+  <div class="modal-box">
+    <div class="scene-number">UN SECRETO PARA TI</div>
+    <h3 id="envelopeTitle" class="gold"></h3>
+    <p id="envelopeText" style="line-height:2;color:#ead3da"></p>
+    <button class="gold-button" onclick="closeEnvelope()">GUARDAR ESTE MOMENTO</button>
+  </div>
 </div>
-<audio id="audio"></audio>
-
-<section class="reveal">
- <div class="eyebrow">UN SECRETO ANTES DE COMENZAR</div>
- <h2>Lo que he imaginado</h2>
- <img class="photo" src="https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/9e6f5461c8334d5e8d17b59fe11ca3be.jpg">
- <div class="story">
- <p>No te imaginas cuántas veces he pensado en esta noche. Cuántas veces te he imaginado aquí conmigo, cuánto he deseado tenerte cerca, sentir tus brazos, tus besos y esa manera tan tuya de hacerme perder la noción del tiempo.</p>
- <p>Quiero que esta noche nos olvidemos del mundo. Que no tengamos prisa, que nos disfrutemos, que nos provoquemos, que nos deseemos tanto que nos cueste pensar en cualquier otra cosa.</p>
- <p>Que esta noche nos sobren las ganas y nos falten las horas. ❤️‍🔥</p>
- </div>
-</section>
-
-<section class="reveal">
- <div class="eyebrow">QUE DECIDA EL DESTINO</div>
- <h2>La ruleta de las sorpresas</h2>
- <p class="intro">Gira la ruleta y descubre quién tendrá que sorprender primero al otro.</p>
- <div class="card center">
-  <div id="wheel"><span>DARIEL · TOKISCHA</span></div>
-  <button class="btn" id="spin" onclick="girar()">Girar la ruleta ❤️‍🔥</button>
-  <div class="result" id="result"></div>
-  <p>La ruleta solo elige quién da la sorpresa. Lo que suceda después queda entre ustedes.</p>
- </div>
- <img class="photo" src="https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/7a6255c0a5b3e0b1d2579353af831f65.jpg">
-</section>
-
-<section class="reveal">
- <div class="eyebrow">SIN FILTROS · SOLO CONFIANZA</div>
- <h2>Deseos ocultos</h2>
- <p class="intro">Hay deseos que se guardan en silencio… y otros que merecen ser confesados.</p>
- <img class="photo" src="https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/f930fcf1f430fef70bd6744b1be0c647.jpg">
- <div class="confessions">
-  <div class="card">
-   <h3>Dariel, cuéntame tu deseo oculto…</h3>
-   <p>¿Qué has imaginado? ¿Qué deseas experimentar conmigo? ¿Qué es eso que llevas tiempo queriendo decirme?</p>
-   <textarea id="dariel" placeholder="Escribe aquí tu deseo…"></textarea>
-   <button class="btn" onclick="copiar('dariel')">Copiar mi confesión</button>
-  </div>
-  <div class="card">
-   <h3>Tokischa, ahora es tu turno…</h3>
-   <p>No te guardes nada. Cuéntale ese deseo que tienes reservado para él.</p>
-   <textarea id="tokischa" placeholder="Escribe aquí tu deseo…"></textarea>
-   <button class="btn" onclick="copiar('tokischa')">Copiar mi confesión</button>
-  </div>
- </div>
- <p class="center">DOS CONFESIONES · CERO VERGÜENZA ❤️‍🔥</p>
-</section>
-
-<section class="reveal">
- <div class="eyebrow">UNA PREGUNTA PUEDE ENCENDER MIL IDEAS</div>
- <h2>¿Qué harías si estuvieras aquí conmigo?</h2>
- <p class="intro">Elige un sobre. No sabes qué pregunta esconde…</p>
- <img class="photo" src="https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/728be309eb587f2d574d533fb3f92d74.jpg">
- <div class="envelopes" id="envelopes"></div>
- <div class="card" id="questionBox">
-  <div class="eyebrow">TU SOBRE SECRETO</div>
-  <h3 id="question"></h3>
-  <textarea id="answer" placeholder="¿Qué responderías?"></textarea>
-  <button class="btn" onclick="copiar('answer')">Copiar respuesta</button>
- </div>
-</section>
-
-<section class="reveal">
- <div class="eyebrow">Y LLEGAMOS A NUESTRA ÚLTIMA SORPRESA</div>
- <h2>Cómo hemos llegado hasta aquí…</h2>
- <img class="photo" src="https://raw.githubusercontent.com/estrellarocio/luna-de-miel-dariel-tokischa/main/1759d5d2511ec094b8078df4c36e3bfa.jpg">
- <div class="story">
- <p>Y bueno, mi amor… hemos llegado hasta aquí. Esto me da muchísima vergüenza. Realmente no pude encontrar un video, digamos, decente. Pero pues encontré este. Y no sé, literalmente dice esta búsqueda. No sé por qué la hice, pero lo quería compartir contigo y pues me gustaría que lo veamos y nos dejemos llevar.</p>
- </div>
- <div class="final-player">
-  <div class="player-screen">
-   <div class="play">▶</div>
-   <div class="upss">¡Ups!</div>
-   <p>Parece que esta vez el video no quiso acompañarnos. Es demasiado grande para subirlo a nuestra página y no fue posible incluirlo aquí.</p>
-   <p>Pero tranquilo, mi amor… eso lo resolvemos tú y yo. No quería dejarte sin saber que tenía algo preparado para ti. ❤️‍🔥</p>
-  </div>
-  <div class="player-foot">EL VIDEO QUEDA PENDIENTE… LA SORPRESA NO SE CANCELA.</div>
- </div>
-</section>
-
-<footer>HECHO CON AMOR · DARIEL & TOKISCHA<br><br>SOLO TÚ Y YO ❤️‍🔥</footer>
 
 <script>
-const audio=document.getElementById('audio');
-const songs=[
- {name:'EARNED IT · THE WEEKND',src:'The Weeknd - Earned It (from Fifty Shades Of Grey) (Official Lyric Video)(MP3_160K).mp3'},
- {name:'I FEEL IT COMING · THE WEEKND',src:'I Feel It Coming(MP3_160K).mp3'}
-];
-let current=0,rotation=0,spinning=false;
+const song1=document.getElementById('song1');
+const song2=document.getElementById('song2');
+let currentSong=1;
+let musicPlaying=false;
+let spinning=false;
+let rotation=0;
 
-function entrar(){
- document.getElementById('music').style.display='flex';
- audio.src=songs[0].src;
- audio.volume=.65;
- audio.play().catch(()=>{});
- document.getElementById('inicio').nextElementSibling.nextElementSibling.scrollIntoView({behavior:'smooth'});
+function enterNight() {
+  document.getElementById('intro').style.display='none';
+  document.getElementById('mainSite').style.display='block';
+  window.scrollTo(0,0);
+
+  song1.volume=.45;
+  song1.play().then(()=>{
+    musicPlaying=true;
+    updateMusicButton();
+  }).catch(()=>{
+    document.getElementById('musicToggle').textContent='♫ Activar música';
+  });
+
+  createParticles();
+  observeScenes();
 }
-function playPause(){
- if(audio.paused){audio.play();document.getElementById('playButton').textContent='Ⅱ'}
- else{audio.pause();document.getElementById('playButton').textContent='▶'}
+
+function updateMusicButton() {
+  document.getElementById('musicToggle').textContent=
+    musicPlaying?'♫ Pausar música':'♫ Reproducir música';
 }
-function nextSong(){
- current=(current+1)%songs.length;
- audio.src=songs[current].src;
- document.getElementById('songName').textContent=songs[current].name;
- audio.play().catch(()=>{});
+
+function toggleMusic() {
+  if(musicPlaying) {
+    song1.pause();
+    song2.pause();
+    musicPlaying=false;
+  } else {
+    const active=currentSong===1?song1:song2;
+    active.play().then(()=>{
+      musicPlaying=true;
+      updateMusicButton();
+    }).catch(()=>{});
+  }
+  updateMusicButton();
 }
-audio.addEventListener('ended',()=>{
- if(current===0){current=1;audio.src=songs[1].src;document.getElementById('songName').textContent=songs[1].name;audio.play().catch(()=>{})}
+
+song1.addEventListener('ended',()=>{
+  currentSong=2;
+  song2.volume=.45;
+  song2.play().then(()=>{
+    musicPlaying=true;
+    updateMusicButton();
+  }).catch(()=>{});
 });
-function girar(){
- if(spinning)return;
- spinning=true;
- const btn=document.getElementById('spin');
- btn.disabled=true;
- document.getElementById('result').textContent='';
- rotation+=1800+Math.random()*720;
- document.getElementById('wheel').style.transform=`rotate(${rotation}deg)`;
- const winner=Math.random()<.5?'Tokischa te dará una sorpresa':'Dale una sorpresa a Tokischa';
- setTimeout(()=>{
-  document.getElementById('result').textContent=winner;
-  btn.disabled=false;spinning=false;
- },5100);
+
+function createParticles() {
+  const area=document.getElementById('particles');
+  for(let i=0;i<22;i++) {
+    const p=document.createElement('span');
+    p.className='particle';
+    p.textContent=['♡','✦','♥','✧'][i%4];
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(8+Math.random()*10)+'s';
+    p.style.animationDelay=Math.random()*10+'s';
+    p.style.fontSize=(12+Math.random()*15)+'px';
+    area.appendChild(p);
+  }
 }
-function copiar(id){
- const el=document.getElementById(id);
- if(!el.value.trim()){alert('Escribe tu respuesta primero ❤️');return}
- navigator.clipboard.writeText(el.value).then(()=>alert('¡Copiado! ❤️')).catch(()=>{el.select();document.execCommand('copy');alert('¡Copiado! ❤️')});
+
+function observeScenes() {
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.15});
+
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 }
-const questions=[
-'Si esta noche apareciera frente a ti sin avisar, ¿qué sería lo primero que harías?',
-'Si pudiéramos desaparecer del mundo durante una hora, ¿cómo la aprovecharías conmigo?',
-'Si estuviera ahora mismo a tu lado, ¿qué te gustaría susurrarme?',
-'Si pudieras cumplir un deseo conmigo esta noche, ¿cuál elegirías?',
-'Si la distancia desapareciera por completo, ¿qué plan improvisarías para nosotros?',
-'Si pudieras detener un instante de nuestra noche, ¿cuál querrías guardar para siempre?',
-'Si estuviéramos juntos ahora mismo, ¿qué detalle mío crees que te tendría sonriendo?',
-'Si tuvieras que describir lo que imaginas de esta noche en tres palabras, ¿cuáles serían?'
+
+const challenges=[
+  {title:'Una confesión',text:'Confiesa algo que siempre has querido decirme, pero nunca te has atrevido.'},
+  {title:'Un deseo',text:'Cuéntame qué momento romántico te gustaría vivir conmigo cuando estemos juntos.'},
+  {title:'Un reto',text:'Envíame un mensaje de voz diciéndome tres cosas que te encantan de mí.'},
+  {title:'Un recuerdo',text:'Cuéntame cuál ha sido tu recuerdo favorito de nuestra historia.'},
+  {title:'Un atrevimiento',text:'Descríbeme cómo sería tu noche perfecta conmigo, sin dejar ningún detalle.'},
+  {title:'Una pregunta',text:'¿Qué es lo primero que harías si ahora mismo apareciera frente a ti?'},
+  {title:'Una sorpresa',text:'Elige una canción que te recuerde a nosotros y dedícamela.'},
+  {title:'Una tentación',text:'Escríbeme algo bonito que consiga sacarme una sonrisa inmediatamente.'}
 ];
-questions.forEach((q,i)=>{
- const b=document.createElement('button');
- b.className='envelope';
- b.innerHTML=`✉<br><small>SOBRE SECRETO ${String(i+1).padStart(2,'0')}</small><br>Descúbrelo`;
- b.onclick=()=>{
-  document.getElementById('question').textContent=q;
-  document.getElementById('answer').value='';
-  document.getElementById('questionBox').classList.add('show');
-  document.getElementById('questionBox').scrollIntoView({behavior:'smooth',block:'center'});
- };
- document.getElementById('envelopes').appendChild(b);
+
+function spinWheel() {
+  if(spinning)return;
+  spinning=true;
+  const btn=document.getElementById('spinButton');
+  const wheel=document.getElementById('wheel');
+  const result=document.getElementById('wheelResult');
+
+  btn.disabled=true;
+  result.classList.add('hidden');
+
+  const index=Math.floor(Math.random()*challenges.length);
+  rotation+=1800+Math.random()*900+(index*45);
+  wheel.style.transform=`rotate(${rotation}deg)`;
+
+  setTimeout(()=>{
+    document.getElementById('resultTitle').textContent=challenges[index].title;
+    document.getElementById('resultText').textContent=challenges[index].text;
+    result.classList.remove('hidden');
+    btn.disabled=false;
+    spinning=false;
+  },4100);
+}
+
+const secrets=[
+  {title:'El primer secreto',text:'Dime tres cosas que te gustaría hacer conmigo en nuestra próxima cita.'},
+  {title:'Una confesión',text:'Cuéntame algo que nunca me hayas dicho y que quieras compartir conmigo.'},
+  {title:'Una fantasía',text:'Descríbeme una experiencia romántica que te gustaría vivir a mi lado.'},
+  {title:'Un recuerdo',text:'Elige uno de nuestros momentos y cuéntame por qué lo guardarías para siempre.'},
+  {title:'Un reto',text:'Envíame una nota de voz con el mensaje más bonito que puedas improvisar.'},
+  {title:'Una pregunta',text:'¿Qué detalle mío te hace sentir más enamorado?' },
+  {title:'Una promesa',text:'Prométeme algo bonito que quieras cumplir cuando estemos juntos.'},
+  {title:'La última sorpresa',text:'Hoy tienes que dedicarme una canción y explicarme por qué la elegiste.'}
+];
+
+const opened=new Set();
+const grid=document.getElementById('envelopes');
+
+secrets.forEach((secret,index)=>{
+  const button=document.createElement('button');
+  button.className='envelope';
+  button.innerHTML=`<span class="symbol">✉</span><small>SOBRE ${String(index+1).padStart(2,'0')}</small>`;
+  button.addEventListener('click',()=>{
+    if(opened.has(index))return;
+    opened.add(index);
+    button.disabled=true;
+    button.innerHTML=`<span class="symbol">♥</span><small>ABIERTO</small>`;
+    document.getElementById('envelopeTitle').textContent=secret.title;
+    document.getElementById('envelopeText').textContent=secret.text;
+    document.getElementById('envelopeModal').classList.remove('hidden');
+  });
+  grid.appendChild(button);
 });
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+
+function closeEnvelope() {
+  document.getElementById('envelopeModal').classList.add('hidden');
+}
+
+async function copyConfession() {
+  const value=document.getElementById('confession').value.trim();
+  if(!value) {
+    document.getElementById('copyMessage').textContent='Primero escribe tu confesión, mi amor.';
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(value);
+    document.getElementById('copyMessage').textContent='♡ Tu confesión está lista para enviar por WhatsApp.';
+  } catch(e) {
+    document.getElementById('confession').select();
+    document.getElementById('copyMessage').textContent='Selecciona y copia tu mensaje.';
+  }
+}
+
+function sendWhatsApp() {
+  const value=document.getElementById('confession').value.trim();
+  if(!value) {
+    document.getElementById('copyMessage').textContent='Primero escribe tu confesión.';
+    return;
+  }
+  const message=encodeURIComponent('Tengo algo que confesarte... ❤️\n\n'+value);
+  window.open('https://wa.me/?text='+message,'_blank');
+}
+
+function go(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
 </script>
+
 </body>
 </html>
